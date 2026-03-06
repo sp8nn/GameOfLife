@@ -40,5 +40,30 @@ namespace GameOfLife
                 }
             }
         }
+        public int CountNeighbors(int row, int col)
+        {
+            int count = 0;
+
+            for (int r = row - 1; r <= row + 1; r++)
+            {
+                for (int c = col - 1; c <= col + 1; c++)
+                {
+                    // Skip the cell itself
+                    if (r == row && c == col)
+                        continue;
+
+                    // Check board boundaries
+                    if (r >= 0 && r < Rows && c >= 0 && c < Columns)
+                    {
+                        if (_cells[r, c])
+                        {
+                            count++;
+                        }
+                    }
+                }
+            }
+
+            return count;
+        }
     }
 }
