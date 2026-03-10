@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace GameOfLife
 {
@@ -6,7 +7,17 @@ namespace GameOfLife
     {
         static void Main(string[] args)
         {
-            Board board = new Board(10, 20);
+            Board board = new Board(20, 40);
+
+            board.Randomize();
+
+            while (true)
+            {
+                board.Print();
+                board.NextGeneration();
+
+                Thread.Sleep(200);
+            }
 
             board.Print();
 
